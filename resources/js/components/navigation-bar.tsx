@@ -1,5 +1,5 @@
 import { Search } from "lucide-react";
-import { Sidebar } from "./Sidebar";
+import { Sidebar } from "./sidebar";
 import {
     NavigationBarList,
     NavigationBarLogo,

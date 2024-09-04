@@ -3,9 +3,9 @@ import { Library, Play } from "lucide-react";
 export function HeroSection() {
     return (
         <section className="flex flex-col p-4 gap-6 mb-10">
-            <h1 className="inline font-bold text-3xl tracking-tighter">
+            <h1 className="inline font-bold text-2xl tracking-tighter">
                 Best Place to Learn Programming
-                <div className="ml-1 inline-block font-semibold text-[20px] border-2 border-black dark:border-white rounded-xl px-3 -rotate-1 tracking-tighter">
+                <div className="ml-1 inline-block font-semibold text-[18px] border-2 border-black dark:border-white rounded-xl px-3 -rotate-1 tracking-tighter">
                     For Beginners
                 </div>
             </h1>

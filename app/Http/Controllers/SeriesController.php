@@ -40,7 +40,7 @@ class SeriesController extends Controller
    */
   public function index()
   {
-    $series = Series::orderBy("created_at", "desc")->paginate(10);
+    $series = Series::latest()->get();
 
     return inertia('series/index', compact('series'));
   }

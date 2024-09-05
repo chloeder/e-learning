@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ArticleController extends Controller
 {
@@ -36,7 +37,7 @@ class ArticleController extends Controller
    */
   public function index()
   {
-    $articles = Article::orderBy('title', 'asc')->paginate(10);
+    $articles = Article::latest()->get();
 
     return inertia('articles/index', compact('articles'));
   }

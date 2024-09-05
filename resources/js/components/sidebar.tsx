@@ -1,94 +1,21 @@
-// import { Link } from "@inertiajs/react";
-// import {
-//     BookCheck,
-//     LibraryBig,
-//     Menu,
-//     RocketIcon,
-//     TvMinimalPlay,
-// } from "lucide-react";
-// import { NavigationBarList, NavigationBarListItem } from "./ui/navbar";
-// import {
-//     Sheet,
-//     SheetContent,
-//     SheetDescription,
-//     SheetHeader,
-//     SheetTitle,
-//     SheetTrigger,
-// } from "./ui/sheet";
-
-// export function Sidebar() {
-//     return (
-//         <Sheet>
-//             <SheetTrigger>
-//                 <Menu />
-//             </SheetTrigger>
-//             <SheetContent side="left" className="dark:text-white">
-//                 <SheetHeader className="flex flex-col items-start justify-start">
-//                     <SheetTitle className="mb-5">Logo</SheetTitle>
-//                     <SheetDescription className="text-start">
-//                         <NavigationBarList className="flex-col gap-6 items-start">
-//                             <NavigationBarListItem className="font-semibold text-black">
-//                                 <TvMinimalPlay className="mr-5" />
-//                                 <Link href={route("dashboard")}>Series</Link>
-//                             </NavigationBarListItem>
-//                             <NavigationBarListItem className="font-semibold text-black">
-//                                 <BookCheck className="mr-5" />
-//                                 <Link href={route("dashboard")}>Artikel</Link>
-//                             </NavigationBarListItem>
-//                             <NavigationBarListItem className="font-semibold text-black">
-//                                 <LibraryBig className="mr-5" />
-//                                 <Link href={route("dashboard")}>Buku</Link>
-//                             </NavigationBarListItem>
-//                             <NavigationBarListItem className="font-semibold text-black">
-//                                 <RocketIcon className="mr-5" />
-//                                 <Link href={route("dashboard")}>
-//                                     Membership
-//                                 </Link>
-//                             </NavigationBarListItem>
-//                             <NavigationBarListItem className="font-semibold text-black">
-//                                 <a href={route("login")}>Login</a>
-//                             </NavigationBarListItem>
-//                             <NavigationBarListItem className="font-semibold text-black">
-//                                 <a href={route("register")}>Register</a>
-//                             </NavigationBarListItem>
-//                         </NavigationBarList>
-//                     </SheetDescription>
-//                 </SheetHeader>
-//             </SheetContent>
-//         </Sheet>
-//     );
-// }
-
-import { Description } from "@headlessui/react";
 import {
-    IconBrandGithub,
-    IconPerson,
     IconBook,
-    IconBrandCopilot,
-    IconChart,
-    IconStar,
-    IconCodeBrackets,
-    IconBuilding,
-    IconGlobe,
-    IconHeart,
-    IconFilter,
-    IconGear,
-    IconBookOpen,
-    IconPeople,
-    IconMessages,
-    IconLogout,
-    IconOldTv,
     IconBooks,
+    IconComputer,
+    IconKey,
+    IconLogin,
+    IconMoon,
+    IconOldTv,
     IconRocket,
+    IconSun,
 } from "justd-icons";
-import { useState } from "react";
 
-import { Avatar } from "./ui/avatar";
-import { Sheet } from "./ui/sheet";
-import { Menu } from "./ui/menu";
 import { Link } from "@inertiajs/react";
+import { Avatar } from "./ui/avatar";
+import { Menu } from "./ui/menu";
+import { Sheet } from "./ui/sheet";
 
-export default function Sidebar() {
+export function Sidebar() {
     return (
         <Sheet>
             <Sheet.Trigger aria-label="Open menu">
@@ -123,35 +50,29 @@ export default function Sidebar() {
                                     Membership
                                 </Link>
                             </Menu.Item>
+                        </Menu.Section>
+                        <Menu.Section>
                             <Menu.Item>
-                                <IconStar /> Your stars
+                                <IconLogin />{" "}
+                                <Link href={route("login")}>Login</Link>
                             </Menu.Item>
                             <Menu.Item>
-                                <IconCodeBrackets /> Your gists
-                            </Menu.Item>
-                            <Menu.Item>
-                                <IconBuilding /> Your organizations
-                            </Menu.Item>
-                            <Menu.Item>
-                                <IconGlobe /> Your enterprises
-                            </Menu.Item>
-                            <Menu.Item>
-                                <IconHeart />
-                                Your sponsors
+                                <IconKey />
+                                <Link href={route("register")}>Register</Link>
                             </Menu.Item>
                         </Menu.Section>
                         <Menu.Section>
                             <Menu.Item>
-                                <IconFilter /> Feature preview
+                                <IconMoon />
+                                Dark
                             </Menu.Item>
                             <Menu.Item>
-                                <IconGear />
-                                Settings
+                                <IconSun />
+                                Light
                             </Menu.Item>
-                        </Menu.Section>
-                        <Menu.Section>
                             <Menu.Item>
-                                <IconLogout /> Sign out
+                                <IconComputer />
+                                System
                             </Menu.Item>
                         </Menu.Section>
                     </Menu.Primitive>

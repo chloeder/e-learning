@@ -131,6 +131,51 @@ const HomeContentSection = forwardRef<HTMLDivElement, HomeContentSectionProps>(
 
 HomeContentSection.displayName = "HomeContentSection";
 
+export type HomeReviewSectionProps = HTMLProps<HTMLDivElement>;
+
+const HomeReviewSection = forwardRef<HTMLDivElement, HomeReviewSectionProps>(
+    ({ children, className, ...props }, ref) => {
+        return (
+            <section
+                className={cn(
+                    "flex flex-col dark:text-white dark:bg-black",
+                    className
+                )}
+                ref={ref}
+                {...props}
+            >
+                {children}
+            </section>
+        );
+    }
+);
+
+HomeReviewSection.displayName = "HomeReviewSection";
+
+export type HomeFooterSectionProps = HTMLProps<HTMLDivElement>;
+
+const HomeFooterSection = forwardRef<HTMLDivElement, HomeFooterSectionProps>(
+    ({ children, className, ...props }, ref) => {
+        {
+            return (
+                <footer
+                    className={cn(
+                        "flex flex-col dark:text-white dark:bg-black",
+                        className
+                    )}
+                    ref={ref}
+                    {...props}
+                >
+                    {children}
+                </footer>
+            );
+        }
+    }
+);
+
+HomeFooterSection.displayName = "HomeFooterSection";
+
+// Home Button
 export type HomeButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
 const HomeButton = forwardRef<HTMLButtonElement, HomeButtonProps>(
@@ -156,5 +201,7 @@ export {
     HomeCarouselSection,
     HomeHeroSection,
     HomeContentSection,
+    HomeReviewSection,
+    HomeFooterSection,
     HomeButton,
 };

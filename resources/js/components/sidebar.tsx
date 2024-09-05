@@ -22,7 +22,7 @@ export function Sidebar() {
             <SheetTrigger>
                 <Menu />
             </SheetTrigger>
-            <SheetContent side="left">
+            <SheetContent side="left" className="dark:text-white">
                 <SheetHeader className="flex flex-col items-start justify-start">
                     <SheetTitle className="mb-5">Logo</SheetTitle>
                     <SheetDescription className="text-start">

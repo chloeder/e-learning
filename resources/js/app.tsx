@@ -19,11 +19,11 @@ createInertiaApp({
     setup({ el, App, props }) {
         if (import.meta.env.DEV) {
             createRoot(el).render(
-                <>
+                <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
                     {" "}
                     <NavigationBar />
                     <App {...props} />
-                </>
+                </ThemeProvider>
             );
             return;
         }

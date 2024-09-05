@@ -6,18 +6,25 @@ import {
     CarouselPrevious,
     CarouselNext,
 } from "@/components/ui/carousel";
+import {
+    HomeCarouselSection,
+    HomeHeading,
+    HomeSubheading,
+} from "./home-partials";
 
 export function CarouselSection() {
     return (
-        <section className="flex flex-col">
-            <h1 className="font-semibold text-lg tracking-tight px-4">
+        <HomeCarouselSection className="mb-10">
+            <HomeHeading className="text-xl px-4">
                 What do you want to learn today?
-            </h1>
-            <p className="text-sm tracking-tighter px-4">
+            </HomeHeading>
+            <HomeSubheading className="px-4">
+                {" "}
                 Hey, there are lots of interesting choices here, you know! Come
                 on, find something fun to learn.
-            </p>
-            <Carousel className="w-full p-4 mt-4 bg-gray-200/80  ">
+            </HomeSubheading>
+
+            <Carousel className="w-full p-4 mt-4 bg-zinc-200/80 dark:bg-zinc-900">
                 <CarouselContent>
                     {Array.from({ length: 5 }).map((_, index) => (
                         <CarouselItem
@@ -41,6 +48,6 @@ export function CarouselSection() {
                     <CarouselNext />
                 </div>
             </Carousel>
-        </section>
+        </HomeCarouselSection>
     );
 }

@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ButtonHTMLAttributes, forwardRef, HTMLProps } from "react";
 
@@ -175,25 +176,6 @@ const HomeFooterSection = forwardRef<HTMLDivElement, HomeFooterSectionProps>(
 
 HomeFooterSection.displayName = "HomeFooterSection";
 
-// Home Button
-export type HomeButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
-
-const HomeButton = forwardRef<HTMLButtonElement, HomeButtonProps>(
-    ({ children, className, ...props }, ref) => {
-        return (
-            <button
-                className={cn("px-5 py-2 rounded-2xl shadow-sm", className)}
-                ref={ref}
-                {...props}
-            >
-                {children}
-            </button>
-        );
-    }
-);
-
-HomeButton.displayName = "HomeButton";
-
 export {
     HomeSection,
     HomeHeading,
@@ -203,5 +185,4 @@ export {
     HomeContentSection,
     HomeReviewSection,
     HomeFooterSection,
-    HomeButton,
 };

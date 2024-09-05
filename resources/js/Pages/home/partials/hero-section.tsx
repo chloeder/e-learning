@@ -1,10 +1,6 @@
+import { Button } from "@/components/ui/button";
 import { Library, Play } from "lucide-react";
-import {
-    HomeHeroSection,
-    HomeHeading,
-    HomeSubheading,
-    HomeButton,
-} from "./home-partials";
+import { HomeHeading, HomeHeroSection, HomeSubheading } from "./home-partials";
 
 export function HeroSection() {
     return (
@@ -24,14 +20,14 @@ export function HeroSection() {
             </HomeSubheading>
 
             <div className="flex items-center gap-4">
-                <HomeButton className="flex items-center bg-orange-500 hover:bg-orange-400 text-white">
+                <Button className="flex items-center dark:text-white">
                     <Play size={14} className="mr-2" />
                     <span className="font-semibold text-sm">Find Series</span>
-                </HomeButton>
-                <HomeButton className="flex items-center border bg-white text-black">
+                </Button>
+                <Button className="flex items-center text-black" intent="light">
                     <Library size={14} className="mr-2" />
                     <span className="font-semibold text-sm">Read Articles</span>
-                </HomeButton>
+                </Button>
             </div>
         </HomeHeroSection>
     );

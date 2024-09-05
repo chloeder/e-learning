@@ -8,7 +8,6 @@ import { CarouselSection } from "./partials/carousel-section";
 import { Content } from "./partials/content";
 import { HeroSection } from "./partials/hero-section";
 import {
-    HomeButton,
     HomeContentSection,
     HomeFooterSection,
     HomeHeading,
@@ -39,9 +38,9 @@ export default function Welcome() {
 
                 <Content />
 
-                <HomeButton className="w-1/2 p-1 rounded-lg ms-auto justify-end items-center bg-orange-500 hover:bg-orange-400 text-white">
+                <Button className="p-2 ms-auto mt-4" size="small">
                     Show More
-                </HomeButton>
+                </Button>
             </HomeContentSection>
 
             <Separator className="my-5" />
@@ -77,9 +76,9 @@ export default function Welcome() {
                 </Card> */}
                 <Content />
 
-                <HomeButton className="w-1/2 p-1 rounded-lg ms-auto justify-end items-center bg-orange-500 hover:bg-orange-400 text-white">
+                <Button className="p-2 ms-auto mt-4" size="small">
                     Show More
-                </HomeButton>
+                </Button>
             </HomeContentSection>
 
             <HomeReviewSection className="p-4">

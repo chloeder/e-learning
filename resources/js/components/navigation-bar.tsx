@@ -1,11 +1,10 @@
-import { Search } from "lucide-react";
+import { SearchButton } from "./search-button";
 import { Sidebar } from "./sidebar";
 import {
     NavigationBarList,
     NavigationBarLogo,
     NavigationBarMenu,
 } from "./ui/navbar";
-import { SearchButton } from "./search-button";
 
 export function NavigationBar() {
     return (

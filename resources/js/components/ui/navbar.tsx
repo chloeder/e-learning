@@ -9,7 +9,7 @@ const NavigationBarMenu = forwardRef<HTMLDivElement, NavigationBarMenuProps>(
         return (
             <nav
                 className={cn(
-                    "relative z-10 flex w-full items-center justify-between p-4 bg-white dark:bg-gray-800 shadow-md dark:shadow-none",
+                    "relative z-10 flex w-full items-center justify-between p-4 bg-white dark:bg-black shadow-md dark:shadow-none dark:text-white",
                     className
                 )}
                 {...props}
@@ -66,7 +66,7 @@ const NavigationBarList = forwardRef<HTMLUListElement, NavigationBarListProps>(
         return (
             <ul
                 className={cn(
-                    "group flex gap-4 list-none items-center",
+                    "group flex gap-4 list-none items-center dark:text-white",
                     className
                 )}
                 {...props}
@@ -88,7 +88,10 @@ const NavigationBarListItem = forwardRef<
 >(({ children, className, ...props }, ref) => {
     return (
         <li
-            className={cn("group flex list-none items-center", className)}
+            className={cn(
+                "group flex list-none items-center dark:text-white",
+                className
+            )}
             {...props}
             ref={ref}
         >

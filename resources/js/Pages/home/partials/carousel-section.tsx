@@ -1,11 +1,5 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselPrevious,
-    CarouselNext,
-} from "@/components/ui/carousel";
+import { Card } from "@/components/ui/card";
+import { Carousel } from "@/components/ui/carousel";
 import {
     HomeCarouselSection,
     HomeHeading,
@@ -24,29 +18,31 @@ export function CarouselSection() {
                 on, find something fun to learn.
             </HomeSubheading>
 
-            <Carousel className="w-full p-4 mt-4 bg-zinc-200/80 dark:bg-zinc-900">
-                <CarouselContent>
-                    {Array.from({ length: 5 }).map((_, index) => (
-                        <CarouselItem
-                            key={index}
-                            className="md:basis-1/2 lg:basis-1/3"
-                        >
-                            <Card>
-                                <CardHeader>Mantap</CardHeader>
-                                <CardContent className="flex aspect-square items-center justify-center ">
-                                    <span className="text-4xl font-semibold">
-                                        {index + 1}
-                                    </span>
-                                </CardContent>
+            <Carousel
+                opts={{
+                    align: "center",
+                    loop: true,
+                }}
+                className="w-full  p-4 mt-4 bg-zinc-200/80 dark:bg-zinc-900"
+            >
+                <Carousel.Content
+                    items={Array.from({ length: 16 }, (_, id) => ({
+                        id: id + 1,
+                    }))}
+                >
+                    {({ id }) => (
+                        <Carousel.Item id={id} className="lg:basis-1/3">
+                            <Card className="flex aspect-square items-center justify-center">
+                                <Card.Title>{id}</Card.Title>
                             </Card>
-                        </CarouselItem>
-                    ))}
-                </CarouselContent>
-                <div className="flex justify-center items-center gap-4 mt-4">
-                    {" "}
-                    <CarouselPrevious />
-                    <CarouselNext />
-                </div>
+                        </Carousel.Item>
+                    )}
+                </Carousel.Content>
+
+                <Carousel.Handler className="justify-center">
+                    <Carousel.Button slot="previous" />
+                    <Carousel.Button slot="next" />
+                </Carousel.Handler>
             </Carousel>
         </HomeCarouselSection>
     );

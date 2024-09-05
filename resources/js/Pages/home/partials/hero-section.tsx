@@ -9,7 +9,7 @@ import {
 export function HeroSection() {
     return (
         <HomeHeroSection className="p-4 gap-6 mb-20">
-            <HomeHeading className="inline text-3xl">
+            <HomeHeading className="inline text-4xl">
                 Effective Screencasts For
                 <div className="ml-2 inline font-semibold text-[20px] border-2 border-black dark:border-white rounded-xl px-3 -rotate-1 tracking-tighter">
                     Web Developers

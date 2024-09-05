@@ -1,14 +1,9 @@
-import { Badge } from "@/components/ui/badge";
-import {
-    Card,
-    CardContent,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
+import { Avatar } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Head } from "@inertiajs/react";
-import { Library } from "lucide-react";
 import { CarouselSection } from "./partials/carousel-section";
 import { Content } from "./partials/content";
 import { HeroSection } from "./partials/hero-section";
@@ -21,9 +16,6 @@ import {
     HomeSection,
     HomeSubheading,
 } from "./partials/home-partials";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 
 export default function Welcome() {
     return (
@@ -60,7 +52,7 @@ export default function Welcome() {
                     Get the latest articles that we have published.
                 </HomeSubheading>
 
-                <Card className="mb-5">
+                {/* <Card className="mb-5">
                     <CardHeader className="flex-row justify-between items-center">
                         <Library />
                         <span className="text-sm text-zinc-300 font-semibold">
@@ -82,7 +74,8 @@ export default function Welcome() {
                             Laravel
                         </Badge>
                     </CardFooter>
-                </Card>
+                </Card> */}
+                <Content />
 
                 <HomeButton className="w-1/2 p-1 rounded-lg ms-auto justify-end items-center bg-orange-500 hover:bg-orange-400 text-white">
                     Show More
@@ -99,110 +92,96 @@ export default function Welcome() {
                 </HomeSubheading>
 
                 <div className="overflow-hidden h-[500px] relative">
-                    <div className="animate-scroll-up flex flex-col shadow-xl">
-                        <Card className="flex flex-col justify-center p-4 gap-4 rounded-2xl mb-4">
-                            <div className="tracking-wide text-md font-medium">
-                                "I love it. I can't live without it".
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Avatar>
-                                    <AvatarImage src="https://github.com/shadcn.png" />
-                                </Avatar>
-                                <p className="text-sm text-zinc-400">
-                                    Shadiq Alatas
+                    <div className="animate-scroll-up flex flex-col shadow-xl gap-4">
+                        <Card className="max-w-lg">
+                            <Card.Content className="mt-4">
+                                <p className="text-zinc-400 mb-4">
+                                    "In this series we will learn how to notify
+                                    all errors from our laravel application to
+                                    our own telegram".
                                 </p>
-                            </div>
+                                <div className="flex items-center">
+                                    <Avatar alt="IR" initials="SL" />
+                                    <span className="ml-2 font-semibold">
+                                        Steward Lumowa
+                                    </span>
+                                </div>
+                            </Card.Content>
                         </Card>
-                        <Card className="flex flex-col justify-center p-4 gap-4 rounded-2xl mb-4">
-                            <div className="tracking-wide text-md font-medium">
-                                "I love it. I can't live without it".
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Avatar>
-                                    <AvatarImage src="https://github.com/shadcn.png" />
-                                </Avatar>
-                                <p className="text-sm text-zinc-400">
-                                    Shadiq Alatas
+                        <Card className="max-w-lg">
+                            <Card.Content className="mt-4">
+                                <p className="text-zinc-400 mb-4">
+                                    "In this series we will learn how to notify
+                                    all errors from our laravel application to
+                                    our own telegram".
                                 </p>
-                            </div>
+                                <div className="flex items-center">
+                                    <Avatar alt="IR" initials="SL" />
+                                    <span className="ml-2 font-semibold">
+                                        Steward Lumowa
+                                    </span>
+                                </div>
+                            </Card.Content>
                         </Card>
-                        <Card className="flex flex-col justify-center p-4 gap-4 rounded-2xl mb-4">
-                            <div className="tracking-wide text-md font-medium">
-                                "I love it. I can't live without it".
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Avatar>
-                                    <AvatarImage src="https://github.com/shadcn.png" />
-                                </Avatar>
-                                <p className="text-sm text-zinc-400">
-                                    Shadiq Alatas
+                        <Card className="max-w-lg">
+                            <Card.Content className="mt-4">
+                                <p className="text-zinc-400 mb-4">
+                                    "In this series we will learn how to notify
+                                    all errors from our laravel application to
+                                    our own telegram".
                                 </p>
-                            </div>
+                                <div className="flex items-center">
+                                    <Avatar alt="IR" initials="SL" />
+                                    <span className="ml-2 font-semibold">
+                                        Steward Lumowa
+                                    </span>
+                                </div>
+                            </Card.Content>
                         </Card>
-                        <Card className="flex flex-col justify-center p-4 gap-4 rounded-2xl mb-4">
-                            <div className="tracking-wide text-md font-medium">
-                                "I love it. I can't live without it".
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Avatar>
-                                    <AvatarImage src="https://github.com/shadcn.png" />
-                                </Avatar>
-                                <p className="text-sm text-zinc-400">
-                                    Shadiq Alatas
+                        <Card className="max-w-lg">
+                            <Card.Content className="mt-4">
+                                <p className="text-zinc-400 mb-4">
+                                    "In this series we will learn how to notify
+                                    all errors from our laravel application to
+                                    our own telegram".
                                 </p>
-                            </div>
+                                <div className="flex items-center">
+                                    <Avatar alt="IR" initials="SL" />
+                                    <span className="ml-2 font-semibold">
+                                        Steward Lumowa
+                                    </span>
+                                </div>
+                            </Card.Content>
                         </Card>
-                        <Card className="flex flex-col justify-center p-4 gap-4 rounded-2xl mb-4">
-                            <div className="tracking-wide text-md font-medium">
-                                "I love it. I can't live without it".
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Avatar>
-                                    <AvatarImage src="https://github.com/shadcn.png" />
-                                </Avatar>
-                                <p className="text-sm text-zinc-400">
-                                    Shadiq Alatas
+                        <Card className="max-w-lg">
+                            <Card.Content className="mt-4">
+                                <p className="text-zinc-400 mb-4">
+                                    "In this series we will learn how to notify
+                                    all errors from our laravel application to
+                                    our own telegram".
                                 </p>
-                            </div>
+                                <div className="flex items-center">
+                                    <Avatar alt="IR" initials="SL" />
+                                    <span className="ml-2 font-semibold">
+                                        Steward Lumowa
+                                    </span>
+                                </div>
+                            </Card.Content>
                         </Card>
-                        <Card className="flex flex-col justify-center p-4 gap-4 rounded-2xl mb-4">
-                            <div className="tracking-wide text-md font-medium">
-                                "I love it. I can't live without it".
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Avatar>
-                                    <AvatarImage src="https://github.com/shadcn.png" />
-                                </Avatar>
-                                <p className="text-sm text-zinc-400">
-                                    Shadiq Alatas
+                        <Card className="max-w-lg">
+                            <Card.Content className="mt-4">
+                                <p className="text-zinc-400 mb-4">
+                                    "In this series we will learn how to notify
+                                    all errors from our laravel application to
+                                    our own telegram".
                                 </p>
-                            </div>
-                        </Card>
-                        <Card className="flex flex-col justify-center p-4 gap-4 rounded-2xl mb-4">
-                            <div className="tracking-wide text-md font-medium">
-                                "I love it. I can't live without it".
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Avatar>
-                                    <AvatarImage src="https://github.com/shadcn.png" />
-                                </Avatar>
-                                <p className="text-sm text-zinc-400">
-                                    Shadiq Alatas
-                                </p>
-                            </div>
-                        </Card>
-                        <Card className="flex flex-col justify-center p-4 gap-4 rounded-2xl mb-4">
-                            <div className="tracking-wide text-md font-medium">
-                                "I love it. I can't live without it".
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Avatar>
-                                    <AvatarImage src="https://github.com/shadcn.png" />
-                                </Avatar>
-                                <p className="text-sm text-zinc-400">
-                                    Shadiq Alatas
-                                </p>
-                            </div>
+                                <div className="flex items-center">
+                                    <Avatar alt="IR" initials="SL" />
+                                    <span className="ml-2 font-semibold">
+                                        Steward Lumowa
+                                    </span>
+                                </div>
+                            </Card.Content>
                         </Card>
                     </div>
                 </div>

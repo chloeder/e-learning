@@ -16,7 +16,6 @@ return new class extends Migration
       $table->string('title')->unique();
       $table->text('description');
       $table->text('content');
-      $table->string('tags');
       $table->timestamps();
     });
   }

@@ -1,9 +1,9 @@
 import { useRef, useState, FormEventHandler } from "react";
-import {DangerButton} from "@/components/danger-button";
-import {InputError} from "@/components/input-error";
-import {InputLabel} from "@/components/input-label";
-import {Modal} from "@/components/modal";
-import {SecondaryButton} from "@/components/secondary-button";
+import { DangerButton } from "@/components/danger-button";
+import { InputError } from "@/components/input-error";
+import { InputLabel } from "@/components/input-label";
+import { Modal } from "@/components/modal";
+import { SecondaryButton } from "@/components/secondary-button";
 import TextInput from "@/components/text-input";
 import { useForm } from "@inertiajs/react";
 
@@ -50,11 +50,11 @@ export default function DeleteUserForm({
     return (
         <section className={`space-y-6 ${className}`}>
             <header>
-                <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+                <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
                     Delete Account
                 </h2>
 
-                <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
                     Once your account is deleted, all of its resources and data
                     will be permanently deleted. Before deleting your account,
                     please download any data or information that you wish to
@@ -68,11 +68,11 @@ export default function DeleteUserForm({
 
             <Modal show={confirmingUserDeletion} onClose={closeModal}>
                 <form onSubmit={deleteUser} className="p-6">
-                    <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+                    <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
                         Are you sure you want to delete your account?
                     </h2>
 
-                    <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                    <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
                         Once your account is deleted, all of its resources and
                         data will be permanently deleted. Please enter your
                         password to confirm you would like to permanently delete
@@ -95,7 +95,7 @@ export default function DeleteUserForm({
                             onChange={(e) =>
                                 setData("password", e.target.value)
                             }
-                            className="mt-1 block w-3/4"
+                            className="mt-1 block w-3/4 p-2"
                             isFocused
                             placeholder="Password"
                         />

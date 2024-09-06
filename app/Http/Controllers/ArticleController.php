@@ -57,8 +57,9 @@ class ArticleController extends Controller
   {
     $validationData = $this->validateSeries($request);
 
-    $article = Article::create($validationData);
-    return inertia('articles/index', compact('article'));
+    Article::create($validationData);
+
+    return to_route('articles.index');
   }
 
   /**
@@ -91,7 +92,7 @@ class ArticleController extends Controller
     $article = Article::find($id);
     $article->update($validationData);
 
-    return inertia('articles/index', compact('article'));
+    return to_route('articles.index');
   }
 
   /**
@@ -100,8 +101,8 @@ class ArticleController extends Controller
   public function destroy(string $id)
   {
     $article = Article::find($id);
-
     $article->delete();
-    return inertia('articles/index', compact('article'));
+
+    return to_route('articles.index');
   }
 }

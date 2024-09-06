@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ButtonHTMLAttributes, forwardRef, HTMLProps } from "react";
 
@@ -131,23 +132,49 @@ const HomeContentSection = forwardRef<HTMLDivElement, HomeContentSectionProps>(
 
 HomeContentSection.displayName = "HomeContentSection";
 
-export type HomeButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+export type HomeReviewSectionProps = HTMLProps<HTMLDivElement>;
 
-const HomeButton = forwardRef<HTMLButtonElement, HomeButtonProps>(
+const HomeReviewSection = forwardRef<HTMLDivElement, HomeReviewSectionProps>(
     ({ children, className, ...props }, ref) => {
         return (
-            <button
-                className={cn("px-5 py-2 rounded-2xl shadow-sm", className)}
+            <section
+                className={cn(
+                    "flex flex-col dark:text-white dark:bg-black",
+                    className
+                )}
                 ref={ref}
                 {...props}
             >
                 {children}
-            </button>
+            </section>
         );
     }
 );
 
-HomeButton.displayName = "HomeButton";
+HomeReviewSection.displayName = "HomeReviewSection";
+
+export type HomeFooterSectionProps = HTMLProps<HTMLDivElement>;
+
+const HomeFooterSection = forwardRef<HTMLDivElement, HomeFooterSectionProps>(
+    ({ children, className, ...props }, ref) => {
+        {
+            return (
+                <footer
+                    className={cn(
+                        "flex flex-col dark:text-white dark:bg-black",
+                        className
+                    )}
+                    ref={ref}
+                    {...props}
+                >
+                    {children}
+                </footer>
+            );
+        }
+    }
+);
+
+HomeFooterSection.displayName = "HomeFooterSection";
 
 export {
     HomeSection,
@@ -156,5 +183,6 @@ export {
     HomeCarouselSection,
     HomeHeroSection,
     HomeContentSection,
-    HomeButton,
+    HomeReviewSection,
+    HomeFooterSection,
 };

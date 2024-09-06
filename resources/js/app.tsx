@@ -1,11 +1,11 @@
-import "./bootstrap";
 import "../css/app.css";
+import "./bootstrap";
 
-import { createRoot, hydrateRoot } from "react-dom/client";
+import { ThemeProvider } from "@/components/theme-provider";
 import { createInertiaApp } from "@inertiajs/react";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
-import { NavigationBar } from "@/components/navigation-bar";
-import { ThemeProvider } from "@/components/theme-provider";
+import { createRoot, hydrateRoot } from "react-dom/client";
+import { Toaster } from "react-hot-toast";
 
 const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 
@@ -20,8 +20,8 @@ createInertiaApp({
         if (import.meta.env.DEV) {
             createRoot(el).render(
                 <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-                    {" "}
-                    <NavigationBar />
+                    <Toaster />
+
                     <App {...props} />
                 </ThemeProvider>
             );
@@ -31,7 +31,8 @@ createInertiaApp({
         hydrateRoot(
             el,
             <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-                <NavigationBar />
+                <Toaster />
+
                 <App {...props} />
             </ThemeProvider>
         );

@@ -1,78 +1,94 @@
-import {
-    Calculator,
-    Calendar,
-    CreditCard,
-    Search,
-    Settings,
-    Smile,
-    User,
-} from "lucide-react";
-import { useState } from "react";
-import {
-    CommandDialog,
-    CommandEmpty,
-    CommandGroup,
-    CommandInput,
-    CommandItem,
-    CommandList,
-    CommandSeparator,
-} from "./ui/command";
+import React from "react";
+import { Button } from "./ui/button";
+import { CommandMenu } from "./ui/command-menu";
+import { Search } from "lucide-react";
 
 export function SearchButton() {
-    const [open, setOpen] = useState<boolean>(false);
-
-    const onHandleOpen = () => {
-        setOpen((previousState) => !previousState);
-    };
-
+    const [isOpen, setIsOpen] = React.useState(false);
     return (
         <>
-            <button onClick={onHandleOpen}>
-                <Search />
-            </button>
-            <CommandDialog
-                open={open}
-                onOpenChange={() => {
-                    setOpen((previousState) => !previousState);
-                }}
-            >
-                <CommandInput
-                    placeholder="Type a command or search..."
-                    className="border-0 focus:ring-0"
-                />
-                <CommandList>
-                    <CommandEmpty>No results found.</CommandEmpty>
-                    <CommandGroup heading="Suggestions">
-                        <CommandItem>
-                            <Calendar className="mr-2 h-4 w-4" />
-                            <span>Calendar</span>
-                        </CommandItem>
-                        <CommandItem>
-                            <Smile className="mr-2 h-4 w-4" />
-                            <span>Search Emoji</span>
-                        </CommandItem>
-                        <CommandItem disabled>
-                            <Calculator className="mr-2 h-4 w-4" />
-                            <span>Calculator</span>
-                        </CommandItem>
-                    </CommandGroup>
-                    <CommandSeparator />
-                    <CommandGroup heading="Settings">
-                        <CommandItem>
-                            <User className="mr-2 h-4 w-4" />
-                            <span>Profile</span>
-                        </CommandItem>
-                        <CommandItem>
-                            <CreditCard className="mr-2 h-4 w-4" />
-                            <span>Billing</span>
-                        </CommandItem>
-                        <CommandItem>
-                            <Settings className="mr-2 h-4 w-4" />
-                            <span>Settings</span>
-                        </CommandItem>
-                    </CommandGroup>
-                </CommandList>
-            </CommandDialog>
+            <Button appearance="plain" onPress={() => setIsOpen(true)}>
+                <Search size={24} />
+            </Button>
+            <CommandMenu isOpen={isOpen} onOpenChange={setIsOpen}>
+                <CommandMenu.Input placeholder="Quick search..." />
+                <CommandMenu.List>
+                    <CommandMenu.Section heading="Pages">
+                        <CommandMenu.Item asChild>
+                            <a href="/">Home</a>
+                        </CommandMenu.Item>
+                        <CommandMenu.Item asChild>
+                            <a href="/docs/getting-started/installation">
+                                Docs
+                            </a>
+                        </CommandMenu.Item>
+                        <CommandMenu.Item asChild>
+                            <a href="/components">Components</a>
+                        </CommandMenu.Item>
+                    </CommandMenu.Section>
+                    <CommandMenu.Separator />
+                    <CommandMenu.Section heading="Users">
+                        {users.map((user) => (
+                            <CommandMenu.Item key={user.id}>
+                                {user.name}
+                            </CommandMenu.Item>
+                        ))}
+                    </CommandMenu.Section>
+                </CommandMenu.List>
+            </CommandMenu>
         </>
     );
 }
+
+const users = [
+    {
+        id: 1,
+        name: "Barbara Kirlin Sr.",
+        image_url: "https://i.pravatar.cc/150?img=1",
+    },
+    {
+        id: 2,
+        name: "Rosemarie Koch",
+        image_url: "https://i.pravatar.cc/150?img=2",
+    },
+    {
+        id: 3,
+        name: "Mrs. Reva Heaney Jr.",
+        image_url: "https://i.pravatar.cc/150?img=3",
+    },
+    {
+        id: 4,
+        name: "Ms. Ettie Abshire DVM",
+        image_url: "https://i.pravatar.cc/150?img=4",
+    },
+    {
+        id: 5,
+        name: "Bria Ziemann",
+        image_url: "https://i.pravatar.cc/150?img=5",
+    },
+    {
+        id: 6,
+        name: "Heloise Borer Sr.",
+        image_url: "https://i.pravatar.cc/150?img=6",
+    },
+    {
+        id: 7,
+        name: "Miss Jacinthe Gerlach DVM",
+        image_url: "https://i.pravatar.cc/150?img=7",
+    },
+    {
+        id: 8,
+        name: "Miss Stephania Schaefer Sr.",
+        image_url: "https://i.pravatar.cc/150?img=8",
+    },
+    {
+        id: 9,
+        name: "Kevon Hackett MD",
+        image_url: "https://i.pravatar.cc/150?img=9",
+    },
+    {
+        id: 10,
+        name: "Tom Ledner",
+        image_url: "https://i.pravatar.cc/150?img=10",
+    },
+];

@@ -1,10 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-import { TagField, TagItemProps } from "@/components/ui/tag-field";
+import { Loader } from "@/components/ui/loader";
 import { TextField } from "@/components/ui/text-field";
 import { Textarea } from "@/components/ui/textarea";
-import { ChangeEvent, FormEvent } from "react";
-import { ListData } from "react-stately";
+import { FormEvent } from "react";
 
 interface ArticleFormProps {
     data: {
@@ -12,56 +11,61 @@ interface ArticleFormProps {
         description: string;
         content: string;
     };
-    handleChange: (
-        e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => void;
-    handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
-    selectedItems: ListData<TagItemProps>;
+    setData: (key: string, value: string) => void;
+    errors: {
+        title?: string;
+        description?: string;
+        content?: string;
+    };
+    submit: (e: FormEvent<HTMLFormElement>) => void;
+    processing: boolean;
 }
 
 export function ArticleForm({
     data,
-    handleChange,
-    handleSubmit,
-    selectedItems,
+    setData,
+    errors,
+    submit,
+    processing,
 }: ArticleFormProps) {
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form validationErrors={errors} onSubmit={submit}>
             <TextField
                 id="title"
                 label="Title"
+                name="title"
                 value={data.title}
-                onChange={setData}
-                isRequired
+                onChange={(v) => setData("title", v)}
                 className="mb-2 text-white"
+                errorMessage={errors.title}
             />
             <TextField
                 id="description"
                 label="Description"
+                name="description"
                 value={data.description}
-                onChange={() => handleChange}
-                isRequired
+                onChange={(v) => setData("description", v)}
                 className="mb-2"
+                errorMessage={errors.description}
             />
             <Textarea
                 id="content"
                 label="Content"
+                name="content"
                 value={data.content}
-                onChange={() => handleChange}
-                isRequired
+                onChange={(v) => setData("content", v)}
                 className="mb-2"
+                errorMessage={errors.content}
             />
-            <TagField
-                intent="secondary"
-                appearance="cool"
-                className="min-w-sm mb-4"
-                max={3}
-                label="Add tag"
-                list={selectedItems}
-            />
-            <Button type="submit" size="small">
-                Submit
-            </Button>
+            {processing ? (
+                <Button type="submit" size="small" isDisabled={processing}>
+                    <Loader className="mr-2" /> Submitting...
+                </Button>
+            ) : (
+                <Button type="submit" size="small">
+                    Submit
+                </Button>
+            )}
         </Form>
     );
 }

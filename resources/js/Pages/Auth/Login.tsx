@@ -6,6 +6,10 @@ import { PrimaryButton } from "@/components/primary-button";
 import TextInput from "@/components/text-input";
 import { Head, Link, useForm } from "@inertiajs/react";
 import { Checkbox } from "@/components/checkbox";
+import { TextField } from "@/components/ui/text-field";
+import { Form } from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 export default function Login({
     status,
@@ -25,6 +29,11 @@ export default function Login({
 
         post(route("login"), {
             onFinish: () => reset("password"),
+            onSuccess: () => {
+                toast.success("Login successfully!", {
+                    position: "top-center",
+                });
+            },
         });
     };
 
@@ -38,38 +47,33 @@ export default function Login({
                 </div>
             )}
 
-            <form onSubmit={submit}>
+            <Form validationErrors={errors} onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="email" value="Email" />
-
-                    <TextInput
+                    <TextField
+                        label="Email"
                         id="email"
                         type="email"
                         name="email"
                         value={data.email}
                         className="mt-1 block w-full"
                         autoComplete="username"
-                        isFocused={true}
-                        onChange={(e) => setData("email", e.target.value)}
+                        onChange={(v) => setData("email", v)}
+                        errorMessage={errors.email}
                     />
-
-                    <InputError message={errors.email} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
-
-                    <TextInput
+                    <TextField
+                        label="Password"
                         id="password"
                         type="password"
                         name="password"
                         value={data.password}
                         className="mt-1 block w-full"
                         autoComplete="current-password"
-                        onChange={(e) => setData("password", e.target.value)}
+                        onChange={(v) => setData("password", v)}
+                        errorMessage={errors.password}
                     />
-
-                    <InputError message={errors.password} className="mt-2" />
                 </div>
 
                 <div className="block mt-4">
@@ -77,9 +81,7 @@ export default function Login({
                         <Checkbox
                             name="remember"
                             checked={data.remember}
-                            onChange={(e) =>
-                                setData("remember", e.target.checked)
-                            }
+                            onChange={(v) => setData("remember", v as any)}
                         />
                         <span className="ms-2 text-sm text-gray-600 dark:text-gray-400">
                             Remember me
@@ -97,11 +99,16 @@ export default function Login({
                         </Link>
                     )}
 
-                    <PrimaryButton className="ms-4" disabled={processing}>
+                    <Button
+                        type="submit"
+                        intent="light"
+                        className="ms-4"
+                        isDisabled={processing}
+                    >
                         Log in
-                    </PrimaryButton>
+                    </Button>
                 </div>
-            </form>
+            </Form>
         </GuestLayout>
     );
 }

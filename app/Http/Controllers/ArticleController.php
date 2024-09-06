@@ -18,7 +18,6 @@ class ArticleController extends Controller
       'title' => 'required|unique:series|min:3',
       'description' => 'required|min:3',
       'content' => 'required|min:3',
-      'tags' => 'required|min:3',
     ], [
       'title.required' => 'The title field is required.',
       'title.unique' => 'The title has already been taken.',
@@ -27,8 +26,6 @@ class ArticleController extends Controller
       'description.min' => 'The description must be at least 3 characters.',
       'content.required' => 'The content field is required.',
       'content.min' => 'The content must be at least 3 characters.',
-      'tags.required' => 'The tags field is required.',
-      'tags.min' => 'The tags must be at least 3 characters.',
     ]);
   }
 
@@ -37,7 +34,7 @@ class ArticleController extends Controller
    */
   public function index()
   {
-    $articles = Article::latest()->get();
+    $articles = Article::all();
 
     return inertia('articles/index', compact('articles'));
   }

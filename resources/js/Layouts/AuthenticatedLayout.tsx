@@ -17,35 +17,27 @@ export default function Authenticated({
     return (
         <div className="min-h-screen bg-zinc-100 dark:bg-zinc-900">
             <nav className="bg-white dark:bg-zinc-800 border-b border-zinc-100 dark:border-zinc-700">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto">
                     <div className="flex justify-between h-16">
-                        <div className="flex">
-                            <div className="shrink-0 flex items-center">
-                                <Link href="/">
-                                    <ApplicationLogo className="block h-9 w-auto fill-current text-zinc-800 dark:text-zinc-200" />
-                                </Link>
-                            </div>
-
-                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink
-                                    href={route("dashboard")}
-                                    active={route().current("dashboard")}
-                                >
-                                    Dashboard
-                                </NavLink>
-                                <NavLink
-                                    href={route("articles.index")}
-                                    active={route().current("articles.index")}
-                                >
-                                    Articles
-                                </NavLink>
-                                <NavLink
-                                    href={route("series.index")}
-                                    active={route().current("series.index")}
-                                >
-                                    Series
-                                </NavLink>
-                            </div>
+                        <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <NavLink
+                                href={route("dashboard")}
+                                active={route().current("dashboard")}
+                            >
+                                Dashboard
+                            </NavLink>
+                            <NavLink
+                                href={route("articles.index")}
+                                active={route().current("articles.index")}
+                            >
+                                Articles
+                            </NavLink>
+                            <NavLink
+                                href={route("series.index")}
+                                active={route().current("series.index")}
+                            >
+                                Series
+                            </NavLink>
                         </div>
 
                         <div className="hidden sm:flex sm:items-center sm:ms-6">

@@ -1,21 +1,12 @@
-import { Button } from "@/components/ui/button";
+import { Breadcrumb, Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Card } from "@/components/ui/card";
-import { Form } from "@/components/ui/form";
-import { TagField } from "@/components/ui/tag-field";
-import { TextField } from "@/components/ui/text-field";
-import { Textarea } from "@/components/ui/textarea";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { PageProps } from "@/types";
 import { Head, useForm } from "@inertiajs/react";
 import { FormEventHandler } from "react";
-import toast from "react-hot-toast";
-import { useListData } from "react-stately";
+import { ArticleForm } from "./partials/article-form";
 
 export default function Create({ auth }: PageProps) {
-    const selectedItems = useListData({
-        initialItems: [],
-    });
-
     const { data, setData, post, processing, errors } = useForm({
         title: "",
         description: "",
@@ -31,9 +22,13 @@ export default function Create({ auth }: PageProps) {
         <AuthenticatedLayout
             user={auth.user}
             header={
-                <h2 className="font-semibold text-xl text-zinc-800 dark:text-zinc-200 leading-tight">
-                    Create Articles
-                </h2>
+                <Breadcrumbs>
+                    <Breadcrumb href="#">Home</Breadcrumb>
+                    <Breadcrumb href={route("articles.index")}>
+                        Articles
+                    </Breadcrumb>
+                    <Breadcrumb>Create Articles</Breadcrumb>
+                </Breadcrumbs>
             }
         >
             <Head title="Articles" />
@@ -46,53 +41,13 @@ export default function Create({ auth }: PageProps) {
                     </Card.Description>
                 </Card.Header>
                 <Card.Content>
-                    <Form validationErrors={errors} onSubmit={submit}>
-                        <TextField
-                            id="title"
-                            label="Title"
-                            name="title"
-                            value={data.title}
-                            onChange={(v) => setData("title", v)}
-                            className="mb-2 text-white"
-                            errorMessage={errors.title}
-                        />
-                        <TextField
-                            id="description"
-                            label="Description"
-                            name="description"
-                            value={data.description}
-                            onChange={(v) => setData("description", v)}
-                            className="mb-2"
-                            errorMessage={errors.description}
-                        />
-                        <Textarea
-                            id="content"
-                            label="Content"
-                            name="content"
-                            value={data.content}
-                            onChange={(v) => setData("content", v)}
-                            className="mb-2"
-                            errorMessage={errors.content}
-                        />
-                        {/* <TagField
-                            onItemInserted={(v) => setData("tags", v)}
-                            name="tags"
-                            intent="secondary"
-                            appearance="cool"
-                            className="min-w-sm mb-4"
-                            max={3}
-                            label="Tags"
-                            list={selectedItems}
-                            errorMessage={errors.tags}
-                        /> */}
-                        <Button
-                            type="submit"
-                            size="small"
-                            isDisabled={processing}
-                        >
-                            Submit
-                        </Button>
-                    </Form>
+                    <ArticleForm
+                        data={data}
+                        setData={setData}
+                        errors={errors}
+                        submit={submit}
+                        processing={processing}
+                    />
                 </Card.Content>
             </Card>
         </AuthenticatedLayout>

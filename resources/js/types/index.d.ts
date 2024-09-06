@@ -12,9 +12,6 @@ export interface Article {
     title: string;
     description: string;
     content: string;
-    tags: string;
-    created_at: string;
-    updated_at: string;
 }
 
 export interface Series {
@@ -24,8 +21,6 @@ export interface Series {
     tags: string;
     video_url: string;
     slug: string;
-    created_at: string;
-    updated_at: string;
 }
 
 export type PageProps<
@@ -34,7 +29,7 @@ export type PageProps<
     auth: {
         user: User;
     };
-    articles: Article[];
-    series: Series[];
+    articles: Article;
+    series: Series;
     ziggy: Config & { location: string };
 };

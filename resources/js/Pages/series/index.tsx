@@ -1,3 +1,4 @@
+import { Breadcrumb, Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { buttonStyles } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
@@ -5,7 +6,6 @@ import { PageProps, Series } from "@/types";
 import { Head, Link } from "@inertiajs/react";
 import { IconPlus } from "justd-icons";
 import { SeriesTable } from "./partials/series-table";
-import { Breadcrumb, Breadcrumbs } from "@/components/ui/breadcrumbs";
 
 export default function Index({
     auth,

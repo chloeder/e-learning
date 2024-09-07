@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-  return Inertia::render('home/welcome', [
+  return Inertia::render('home/Welcome', [
     'canLogin' => Route::has('login'),
     'canRegister' => Route::has('register'),
   ]);

@@ -1,14 +1,10 @@
-import { FormEventHandler } from "react";
 import GuestLayout from "@/Layouts/GuestLayout";
-import { InputError } from "@/components/input-error";
-import { InputLabel } from "@/components/input-label";
-import { PrimaryButton } from "@/components/primary-button";
-import TextInput from "@/components/text-input";
-import { Head, Link, useForm } from "@inertiajs/react";
 import { Checkbox } from "@/components/checkbox";
-import { TextField } from "@/components/ui/text-field";
-import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form";
+import { TextField } from "@/components/ui/text-field";
+import { Head, Link, useForm } from "@inertiajs/react";
+import { FormEventHandler } from "react";
 import { toast } from "sonner";
 
 export default function Login({
@@ -47,6 +43,12 @@ export default function Login({
                 </div>
             )}
 
+            <div className="mb-6">
+                <h1 className="font-extrabold mb-2">Login</h1>
+                <p className="text-zinc-500 text-sm">
+                    Welcome back, please enter your credentials to continue.
+                </p>
+            </div>
             <Form validationErrors={errors} onSubmit={submit}>
                 <div>
                     <TextField
@@ -76,7 +78,7 @@ export default function Login({
                     />
                 </div>
 
-                <div className="block mt-4">
+                <div className="flex justify-between my-6">
                     <label className="flex items-center">
                         <Checkbox
                             name="remember"
@@ -87,9 +89,7 @@ export default function Login({
                             Remember me
                         </span>
                     </label>
-                </div>
 
-                <div className="flex items-center justify-end mt-4">
                     {canResetPassword && (
                         <Link
                             href={route("password.request")}
@@ -98,8 +98,18 @@ export default function Login({
                             Forgot your password?
                         </Link>
                     )}
+                </div>
+
+                <div className="flex items-center justify-between mt-4">
+                    <Link
+                        href={route("register")}
+                        className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                    >
+                        Register
+                    </Link>
 
                     <Button
+                        size="small"
                         type="submit"
                         intent="light"
                         className="ms-4"

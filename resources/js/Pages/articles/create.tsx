@@ -5,6 +5,7 @@ import { PageProps } from "@/types";
 import { Head, useForm } from "@inertiajs/react";
 import { FormEventHandler } from "react";
 import { ArticleForm } from "./partials/article-form";
+import { toast } from "sonner";
 
 export default function Create({ auth }: PageProps) {
     const { data, setData, post, processing, errors } = useForm({
@@ -15,7 +16,13 @@ export default function Create({ auth }: PageProps) {
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
-        post(route("articles.store"));
+        post(route("articles.store"), {
+            onSuccess: () => {
+                toast.success("Article has been created!", {
+                    position: "top-center",
+                });
+            },
+        });
     };
 
     return (

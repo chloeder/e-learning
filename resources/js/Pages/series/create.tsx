@@ -1,11 +1,11 @@
+import { Breadcrumb, Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Card } from "@/components/ui/card";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { PageProps } from "@/types";
 import { Head, useForm } from "@inertiajs/react";
-import { ArticleForm } from "../articles/partials/article-form";
 import { FormEventHandler } from "react";
 import { SeriesForm } from "./partials/series-form";
-import { Breadcrumb, Breadcrumbs } from "@/components/ui/breadcrumbs";
+import { toast } from "sonner";
 
 export default function Create({ auth }: PageProps) {
     const { data, setData, post, processing, errors } = useForm({
@@ -17,7 +17,13 @@ export default function Create({ auth }: PageProps) {
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
-        post(route("series.store"));
+        post(route("series.store"), {
+            onSuccess: () => {
+                toast.success("Article has been created!", {
+                    position: "top-center",
+                });
+            },
+        });
     };
 
     return (

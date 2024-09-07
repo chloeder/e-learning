@@ -1,10 +1,9 @@
-import { useState, PropsWithChildren, ReactNode } from "react";
-import { ApplicationLogo } from "@/components/application-logo";
+import { Dropdown } from "@/components/dropdown";
 import { NavLink } from "@/components/nav-link";
 import { ResponsiveNavLink } from "@/components/responsive-nav-link";
-import { Link } from "@inertiajs/react";
+import { Avatar } from "@/components/ui/avatar";
 import { User } from "@/types";
-import { Dropdown } from "@/components/dropdown";
+import { PropsWithChildren, ReactNode, useState } from "react";
 
 export default function Authenticated({
     user,
@@ -49,7 +48,13 @@ export default function Authenticated({
                                                 type="button"
                                                 className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-zinc-500 dark:text-zinc-400 bg-white dark:bg-zinc-800 hover:text-zinc-700 dark:hover:text-zinc-300 focus:outline-none transition ease-in-out duration-150"
                                             >
-                                                {user.name}
+                                                <Avatar
+                                                    initials={user.name
+                                                        .split(" ")
+                                                        .map((n) => n[0])
+                                                        .join("")}
+                                                    alt={user.name}
+                                                />
 
                                                 <svg
                                                     className="ms-2 -me-0.5 h-4 w-4"

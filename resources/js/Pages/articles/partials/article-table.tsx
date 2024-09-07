@@ -1,7 +1,7 @@
 import { Table } from "@/components/ui/table";
-import { Article, PageProps } from "@/types";
-import { Link, usePage } from "@inertiajs/react";
-import { IconEye, IconPencilBox } from "justd-icons";
+import { Article } from "@/types";
+import { Link } from "@inertiajs/react";
+import { IconPencilBox } from "justd-icons";
 import { DeleteButton } from "./delete-button";
 
 export function ArticleTable({ articles }: { articles: Article[] }) {
@@ -15,23 +15,38 @@ export function ArticleTable({ articles }: { articles: Article[] }) {
                 <Table.Column className="justify-center">Action</Table.Column>
             </Table.Header>
             <Table.Body>
-                {articles.map((article) => (
-                    <Table.Row key={article.id}>
-                        <Table.Cell>{article.id}</Table.Cell>
-                        <Table.Cell>{article.title}</Table.Cell>
-                        <Table.Cell>{article.description}</Table.Cell>
-                        <Table.Cell>{article.content}</Table.Cell>
-                        <Table.Cell>
-                            <div className="flex gap-2">
-                                <IconEye className="text-green-500 w-5" />
-                                <Link href={route("articles.edit", article.id)}>
-                                    <IconPencilBox className="text-blue-500 w-5" />
-                                </Link>
-                                <DeleteButton />
-                            </div>
+                {articles.length > 0 ? (
+                    articles.map((article) => (
+                        <Table.Row key={article.id}>
+                            <Table.Cell>{article.id}</Table.Cell>
+                            <Table.Cell>{article.title}</Table.Cell>
+                            <Table.Cell>{article.description}</Table.Cell>
+                            <Table.Cell>{article.content}</Table.Cell>
+                            <Table.Cell>
+                                <div className="flex gap-2">
+                                    <Link
+                                        href={route(
+                                            "articles.edit",
+                                            article.id
+                                        )}
+                                    >
+                                        <IconPencilBox className="text-blue-500 w-5" />
+                                    </Link>
+                                    <DeleteButton article={articles} />
+                                </div>
+                            </Table.Cell>
+                        </Table.Row>
+                    ))
+                ) : (
+                    <Table.Row>
+                        <Table.Cell
+                            style={{ gridColumnStart: "1", gridColumnEnd: "7" }}
+                            className="text-center cell-span"
+                        >
+                            No Data Found.
                         </Table.Cell>
                     </Table.Row>
-                ))}
+                )}
             </Table.Body>
         </Table>
     );

@@ -1,15 +1,14 @@
-import { Menu } from "@/components/ui/menu";
 import { Table } from "@/components/ui/table";
+import { DeleteButton } from "@/Pages/articles/partials/delete-button";
 import { Series } from "@/types";
-import { IconDotsVertical } from "justd-icons";
+import { Link } from "@inertiajs/react";
+import { IconPencilBox } from "justd-icons";
 
 export function SeriesTable({ series }: { series: Series[] }) {
     return (
         <Table aria-label="Series">
             <Table.Header>
-                <Table.Column isRowHeader allowsSorting>
-                    No
-                </Table.Column>
+                <Table.Column isRowHeader>No</Table.Column>
                 <Table.Column>Title</Table.Column>
                 <Table.Column>Description</Table.Column>
                 <Table.Column>Video URL</Table.Column>
@@ -27,34 +26,18 @@ export function SeriesTable({ series }: { series: Series[] }) {
                             <Table.Cell>{item.video_url}</Table.Cell>
                             <Table.Cell>{item.slug}</Table.Cell>
                             <Table.Cell>
-                                <div className="flex justify-end">
-                                    <Menu>
-                                        <Menu.Trigger>
-                                            <IconDotsVertical />
-                                        </Menu.Trigger>
-                                        <Menu.Content
-                                            aria-label="Actions"
-                                            showArrow
-                                            placement="left"
-                                        >
-                                            <Menu.Item>View</Menu.Item>
-                                            <Menu.Item>Edit</Menu.Item>
-                                            <Menu.Separator />
-                                            <Menu.Item isDanger>
-                                                Delete
-                                            </Menu.Item>
-                                        </Menu.Content>
-                                    </Menu>
+                                <div className="flex gap-2">
+                                    <Link href={route("series.edit", item.id)}>
+                                        <IconPencilBox className="text-blue-500 w-5" />
+                                    </Link>
+                                    <DeleteButton />
                                 </div>
                             </Table.Cell>
                         </Table.Row>
                     ))
                 ) : (
-                    <Table.Row>
-                        <Table.Cell
-                            style={{ gridColumnStart: "1", gridColumnEnd: "7" }}
-                            className="text-center cell-span"
-                        >
+                    <Table.Row className="row-span">
+                        <Table.Cell className="text-center cell-span">
                             No Data Found.
                         </Table.Cell>
                     </Table.Row>

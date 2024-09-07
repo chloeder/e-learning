@@ -1,7 +1,21 @@
 import { Modal } from "@/components/ui/modal";
+import { useForm } from "@inertiajs/react";
 import { IconTrashEmpty } from "justd-icons";
+import { toast } from "sonner";
 
-export function DeleteButton() {
+export function DeleteButton({ article }: { article: any }) {
+    const { delete: destroy } = useForm();
+
+    const handleDelete = () => {
+        destroy(route("articles.destroy", article), {
+            onSuccess: () => {
+                toast.warning("Article has been deleted!", {
+                    position: "top-center",
+                });
+            },
+        });
+    };
+
     return (
         <Modal>
             <Modal.Trigger>
@@ -17,9 +31,12 @@ export function DeleteButton() {
                 </Modal.Header>
                 <Modal.Footer>
                     <Modal.Close appearance="outline">Cancel</Modal.Close>
-                    <Modal.Close appearance="solid" intent="danger">
+                    <button
+                        className="px-2 bg-red-500 rounded-lg text-white"
+                        onClick={handleDelete}
+                    >
                         Continue
-                    </Modal.Close>
+                    </button>
                 </Modal.Footer>
             </Modal.Content>
         </Modal>

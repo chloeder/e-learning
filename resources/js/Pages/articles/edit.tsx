@@ -5,6 +5,7 @@ import { Article, PageProps } from "@/types";
 import { Head, useForm } from "@inertiajs/react";
 import { FormEventHandler } from "react";
 import { ArticleForm } from "./partials/article-form";
+import { toast } from "sonner";
 
 export default function Edit({
     auth,
@@ -18,7 +19,13 @@ export default function Edit({
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
-        patch(route("articles.update", article.id));
+        patch(route("articles.update", article.id), {
+            onSuccess: () => {
+                toast.success("Article has been updated!", {
+                    position: "top-center",
+                });
+            },
+        });
     };
 
     return (

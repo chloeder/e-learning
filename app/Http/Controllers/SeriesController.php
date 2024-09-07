@@ -17,20 +17,14 @@ class SeriesController extends Controller
     return $request->validate([
       'title' => 'required|unique:series|min:3',
       'description' => 'required|min:3',
-      'tags' => 'required|min:3',
       'video_url' => 'required',
-      'slug' => 'required|unique:series',
     ], [
       'title.required' => 'The title field is required.',
       'title.unique' => 'The title has already been taken.',
       'title.min' => 'The title must be at least 3 characters.',
       'description.required' => 'The description field is required.',
       'description.min' => 'The description must be at least 3 characters.',
-      'tags.required' => 'The tags field is required.',
-      'tags.min' => 'The tags must be at least 3 characters.',
       'video_url.required' => 'The video url field is required.',
-      'slug.required' => 'The slug field is required.',
-      'slug.unique' => 'The slug has already been taken.',
     ]);
   }
 
@@ -40,7 +34,7 @@ class SeriesController extends Controller
    */
   public function index()
   {
-    $series = Series::latest()->get();
+    $series = Series::all();
 
     return inertia('series/index', compact('series'));
   }
@@ -60,9 +54,9 @@ class SeriesController extends Controller
   {
     $validationData = $this->validateSeries($request);
 
-    $series = Series::create($validationData);
+    Series::create($validationData);
 
-    return inertia('series/index', compact('series'))->with('success', __('Series created successfully'));
+    return to_route('series.index');
   }
 
   /**
@@ -95,8 +89,10 @@ class SeriesController extends Controller
     $series = Series::find($id);
     $series->update($validationData);
 
-    return inertia('series/show', compact('series'))->with('success', __('Series updated successfully'));
+    return to_route('series.index');
   }
+
+
 
   /**
    * Remove the specified resource from storage.
@@ -106,6 +102,6 @@ class SeriesController extends Controller
     $series = Series::find($id);
     $series->delete();
 
-    return redirect()->route('series.index')->with('success', __('Series deleted successfully'));
+    return redirect()->route('series.index');
   }
 }

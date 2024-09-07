@@ -9,7 +9,7 @@ export function DeleteButton({ article }: { article: any }) {
     const handleDelete = () => {
         destroy(route("articles.destroy", article), {
             onSuccess: () => {
-                toast.warning("Article has been deleted!", {
+                toast.error("Article has been deleted!", {
                     position: "top-center",
                 });
             },

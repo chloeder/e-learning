@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { FileTrigger } from "@/components/ui/file-trigger";
 import { Form } from "@/components/ui/form";
 import { Loader } from "@/components/ui/loader";
 import { TextField } from "@/components/ui/text-field";
@@ -11,14 +10,12 @@ interface ArticleFormProps {
         title: string;
         description: string;
         video_url: string;
-        slug: string;
     };
     setData: (key: string, value: string) => void;
     errors: {
         title?: string;
         description?: string;
         video_url?: string;
-        slug?: string;
     };
     submit: (e: FormEvent<HTMLFormElement>) => void;
     processing: boolean;
@@ -31,10 +28,6 @@ export function SeriesForm({
     submit,
     processing,
 }: ArticleFormProps) {
-    const toSnakeCase = (str: string): string => {
-        return str.replace(/\s+/g, "-").toLowerCase();
-    };
-
     return (
         <Form validationErrors={errors} onSubmit={submit}>
             <TextField
@@ -56,19 +49,13 @@ export function SeriesForm({
                 errorMessage={errors.description}
             />
             <TextField
+                value={data.video_url}
                 label="Video URL"
+                name="video_url"
                 prefix={<IconBrandYoutube />}
+                onChange={(v) => setData("video_url", v)}
                 className="mb-4"
-            />
-            <TextField
-                isReadOnly
-                id="slug"
-                label="Slug"
-                name="slug"
-                value={toSnakeCase(data.title)}
-                onChange={(v) => setData("slug", v)}
-                className="mb-2"
-                errorMessage={errors.slug}
+                errorMessage={errors.video_url}
             />
 
             {processing ? (

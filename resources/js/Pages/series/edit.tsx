@@ -4,18 +4,24 @@ import { PageProps, Series } from "@/types";
 import { Head, useForm } from "@inertiajs/react";
 import { SeriesForm } from "./partials/series-form";
 import { FormEventHandler } from "react";
+import { toast } from "sonner";
 
 export default function Edit({ auth, series }: PageProps<{ series: Series }>) {
     const { data, setData, patch, processing, errors } = useForm({
         title: series.title,
         description: series.description,
-        slug: series.slug,
         video_url: series.video_url,
     });
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
-        patch(route("series.update", series.id));
+        patch(route("series.update", series.id), {
+            onSuccess: () => {
+                toast.success("Series has been updated!", {
+                    position: "top-center",
+                });
+            },
+        });
     };
 
     return (

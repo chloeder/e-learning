@@ -23,6 +23,5 @@ class Article extends Model
     'title',
     'description',
     'content',
-    'tags',
   ];
 }

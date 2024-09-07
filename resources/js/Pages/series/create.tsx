@@ -11,7 +11,6 @@ export default function Create({ auth }: PageProps) {
     const { data, setData, post, processing, errors } = useForm({
         title: "",
         description: "",
-        slug: "",
         video_url: "",
     });
 
@@ -19,7 +18,7 @@ export default function Create({ auth }: PageProps) {
         e.preventDefault();
         post(route("series.store"), {
             onSuccess: () => {
-                toast.success("Article has been created!", {
+                toast.success("Series has been created!", {
                     position: "top-center",
                 });
             },

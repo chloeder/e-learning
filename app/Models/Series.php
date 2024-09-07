@@ -24,8 +24,6 @@ class Series extends Model
   protected $fillable = [
     'title',
     'description',
-    'tags',
     'video_url',
-    'slug',
   ];
 }

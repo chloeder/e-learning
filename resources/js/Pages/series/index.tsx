@@ -11,6 +11,7 @@ export default function Index({
     auth,
     series,
 }: PageProps<{ series: Series[] }>) {
+    console.log(series);
     return (
         <AuthenticatedLayout
             user={auth.user}

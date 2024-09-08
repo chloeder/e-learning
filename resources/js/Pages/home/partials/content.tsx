@@ -11,7 +11,7 @@ interface ContentProps {
 
 export function Content({ title, description, tags, episodes }: ContentProps) {
     return (
-        <Card className="max-w-lg">
+        <Card className="max-w-lg lg:w-full">
             <Card.Header className="flex-row items-center justify-between">
                 <Card.Title>
                     <Play />

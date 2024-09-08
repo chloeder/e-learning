@@ -13,14 +13,16 @@ export interface Article {
     description: string;
     content: string;
     tag: Tags;
+    length: number;
 }
 
 export interface Series {
     id: number;
     title: string;
     description: string;
-    video_url: string;
+    video_url?: string;
     tag: Tags;
+    length: number;
 }
 
 export interface Tags {

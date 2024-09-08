@@ -1,9 +1,8 @@
 import { NavigationBar } from "@/components/navigation-bar";
-import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { Article, Series } from "@/types";
 import { Head } from "@inertiajs/react";
 import { CarouselSection } from "./partials/carousel-section";
 import { Content } from "./partials/content";
@@ -16,8 +15,18 @@ import {
     HomeSection,
     HomeSubheading,
 } from "./partials/home-partials";
+import { ReviewSection } from "./partials/review-section";
 
-export default function Welcome() {
+export default function Welcome({
+    articles,
+    series,
+}: {
+    articles: Article[];
+    series: Series[];
+}) {
+    const articleLength = articles.length;
+    const seriesLength = series.length;
+
     return (
         <>
             <NavigationBar />
@@ -40,11 +49,22 @@ export default function Welcome() {
                         Get the latest series that we have published.
                     </HomeSubheading>
 
-                    <Content />
+                    <div className="lg:flex lg:basis-1/2 gap-4">
+                        {" "}
+                        {series.map((item: Series) => (
+                            <Content
+                                key={item.id}
+                                title={item.title}
+                                description={item.description}
+                                tags={item.tag.title}
+                                episodes={seriesLength}
+                            />
+                        ))}
+                    </div>
 
-                    <Button className="p-2 ms-auto mt-4" size="small">
+                    {/* <Button className="p-2 ms-auto mt-4" size="small">
                         Show More
-                    </Button>
+                    </Button> */}
                 </HomeContentSection>
 
                 <Separator className="my-5" />
@@ -55,11 +75,21 @@ export default function Welcome() {
                         Get the latest articles that we have published.
                     </HomeSubheading>
 
-                    <Content />
+                    <div className="flex flex-col gap-2 md:flex md:flex-col md:gap-4 lg:flex lg:flex-row lg:flex-wrap lg:gap-4">
+                        {articles.map((item: Article) => (
+                            <Content
+                                key={item.id}
+                                title={item.title}
+                                description={item.description}
+                                tags={item.tag.title}
+                                episodes={articleLength}
+                            />
+                        ))}
+                    </div>
 
-                    <Button className="p-2 ms-auto mt-4" size="small">
+                    {/* <Button className="p-2 ms-auto mt-4" size="small">
                         Show More
-                    </Button>
+                    </Button> */}
                 </HomeContentSection>
 
                 <HomeReviewSection className="p-4">
@@ -71,100 +101,7 @@ export default function Welcome() {
                         achieve success.
                     </HomeSubheading>
 
-                    <div className="overflow-hidden h-[500px] relative">
-                        <div className="animate-scroll-up flex flex-col shadow-xl gap-4">
-                            <Card className="max-w-lg">
-                                <Card.Content className="mt-4">
-                                    <p className="text-zinc-400 mb-4">
-                                        "In this series we will learn how to
-                                        notify all errors from our laravel
-                                        application to our own telegram".
-                                    </p>
-                                    <div className="flex items-center">
-                                        <Avatar alt="IR" initials="SL" />
-                                        <span className="ml-2 font-semibold">
-                                            Steward Lumowa
-                                        </span>
-                                    </div>
-                                </Card.Content>
-                            </Card>
-                            <Card className="max-w-lg">
-                                <Card.Content className="mt-4">
-                                    <p className="text-zinc-400 mb-4">
-                                        "In this series we will learn how to
-                                        notify all errors from our laravel
-                                        application to our own telegram".
-                                    </p>
-                                    <div className="flex items-center">
-                                        <Avatar alt="IR" initials="SL" />
-                                        <span className="ml-2 font-semibold">
-                                            Steward Lumowa
-                                        </span>
-                                    </div>
-                                </Card.Content>
-                            </Card>
-                            <Card className="max-w-lg">
-                                <Card.Content className="mt-4">
-                                    <p className="text-zinc-400 mb-4">
-                                        "In this series we will learn how to
-                                        notify all errors from our laravel
-                                        application to our own telegram".
-                                    </p>
-                                    <div className="flex items-center">
-                                        <Avatar alt="IR" initials="SL" />
-                                        <span className="ml-2 font-semibold">
-                                            Steward Lumowa
-                                        </span>
-                                    </div>
-                                </Card.Content>
-                            </Card>
-                            <Card className="max-w-lg">
-                                <Card.Content className="mt-4">
-                                    <p className="text-zinc-400 mb-4">
-                                        "In this series we will learn how to
-                                        notify all errors from our laravel
-                                        application to our own telegram".
-                                    </p>
-                                    <div className="flex items-center">
-                                        <Avatar alt="IR" initials="SL" />
-                                        <span className="ml-2 font-semibold">
-                                            Steward Lumowa
-                                        </span>
-                                    </div>
-                                </Card.Content>
-                            </Card>
-                            <Card className="max-w-lg">
-                                <Card.Content className="mt-4">
-                                    <p className="text-zinc-400 mb-4">
-                                        "In this series we will learn how to
-                                        notify all errors from our laravel
-                                        application to our own telegram".
-                                    </p>
-                                    <div className="flex items-center">
-                                        <Avatar alt="IR" initials="SL" />
-                                        <span className="ml-2 font-semibold">
-                                            Steward Lumowa
-                                        </span>
-                                    </div>
-                                </Card.Content>
-                            </Card>
-                            <Card className="max-w-lg">
-                                <Card.Content className="mt-4">
-                                    <p className="text-zinc-400 mb-4">
-                                        "In this series we will learn how to
-                                        notify all errors from our laravel
-                                        application to our own telegram".
-                                    </p>
-                                    <div className="flex items-center">
-                                        <Avatar alt="IR" initials="SL" />
-                                        <span className="ml-2 font-semibold">
-                                            Steward Lumowa
-                                        </span>
-                                    </div>
-                                </Card.Content>
-                            </Card>
-                        </div>
-                    </div>
+                    <ReviewSection />
                 </HomeReviewSection>
 
                 <HomeFooterSection className="p-4">

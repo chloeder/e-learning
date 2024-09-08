@@ -1,6 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ButtonHTMLAttributes, forwardRef, HTMLProps } from "react";
+import { forwardRef, HTMLProps } from "react";
 
 // Parent Home Section
 export type HomeSectionProps = HTMLProps<HTMLDivElement>;
@@ -177,12 +176,12 @@ const HomeFooterSection = forwardRef<HTMLDivElement, HomeFooterSectionProps>(
 HomeFooterSection.displayName = "HomeFooterSection";
 
 export {
-    HomeSection,
-    HomeHeading,
-    HomeSubheading,
     HomeCarouselSection,
-    HomeHeroSection,
     HomeContentSection,
-    HomeReviewSection,
     HomeFooterSection,
+    HomeHeading,
+    HomeHeroSection,
+    HomeReviewSection,
+    HomeSection,
+    HomeSubheading,
 };

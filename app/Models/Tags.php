@@ -5,13 +5,10 @@ namespace App\Models;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Series extends Model
+class Tags extends Model
 {
-  use
-    HasFactory,
-    Sluggable;
+  use HasFactory, Sluggable;
 
   public function sluggable(): array
   {
@@ -24,13 +21,11 @@ class Series extends Model
 
   protected $fillable = [
     'title',
-    'description',
-    'video_url',
-    'tag_id',
+    'slug',
   ];
 
-  public function tag(): BelongsTo
+  public function articles()
   {
-    return $this->belongsTo(Tags::class);
+    return $this->hasMany(Article::class);
   }
 }

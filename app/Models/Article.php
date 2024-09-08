@@ -5,6 +5,8 @@ namespace App\Models;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Article extends Model
 {
@@ -23,5 +25,11 @@ class Article extends Model
     'title',
     'description',
     'content',
+    'tag_id'
   ];
+
+  public function tag(): BelongsTo
+  {
+    return $this->belongsTo(Tags::class);
+  }
 }

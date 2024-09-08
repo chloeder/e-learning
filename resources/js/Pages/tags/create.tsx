@@ -4,22 +4,19 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { PageProps } from "@/types";
 import { Head, useForm } from "@inertiajs/react";
 import { FormEventHandler } from "react";
-import { SeriesForm } from "./partials/series-form";
 import { toast } from "sonner";
+import { TagsForm } from "./partials/tags-form";
 
 export default function Create({ auth }: PageProps) {
     const { data, setData, post, processing, errors } = useForm({
         title: "",
-        description: "",
-        video_url: "",
-        tag_id: "",
     });
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
-        post(route("series.store"), {
+        post(route("tags.store"), {
             onSuccess: () => {
-                toast.success("Series has been created!", {
+                toast.success("Tags has been created!", {
                     position: "top-center",
                 });
             },
@@ -32,21 +29,21 @@ export default function Create({ auth }: PageProps) {
             header={
                 <Breadcrumbs>
                     <Breadcrumb href="#">Home</Breadcrumb>
-                    <Breadcrumb href={route("series.index")}>Series</Breadcrumb>
-                    <Breadcrumb>Create Series</Breadcrumb>
+                    <Breadcrumb href={route("tags.index")}>Tags</Breadcrumb>
+                    <Breadcrumb>Create Tags</Breadcrumb>
                 </Breadcrumbs>
             }
         >
-            <Head title="Series" />
+            <Head title="Tags" />
             <Card className="min-w-lg m-4 bg-zinc-800">
                 <Card.Header>
-                    <Card.Title>Form Create Series</Card.Title>
+                    <Card.Title>Form Create Tags</Card.Title>
                     <Card.Description>
-                        Create a new series to be published on the blog.
+                        Create a new tags to be published on the blog.
                     </Card.Description>
                 </Card.Header>
                 <Card.Content>
-                    <SeriesForm
+                    <TagsForm
                         data={data}
                         setData={setData}
                         errors={errors}

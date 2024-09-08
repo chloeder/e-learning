@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Series;
+use App\Models\Tags;
 use Illuminate\Http\Request;
 
 class SeriesController extends Controller
@@ -18,6 +19,7 @@ class SeriesController extends Controller
       'title' => 'required|unique:series|min:3',
       'description' => 'required|min:3',
       'video_url' => 'required',
+      'tag_id' => 'required',
     ], [
       'title.required' => 'The title field is required.',
       'title.unique' => 'The title has already been taken.',
@@ -25,6 +27,7 @@ class SeriesController extends Controller
       'description.required' => 'The description field is required.',
       'description.min' => 'The description must be at least 3 characters.',
       'video_url.required' => 'The video url field is required.',
+      'tag_id.required' => 'The tag field is required.',
     ]);
   }
 
@@ -34,7 +37,7 @@ class SeriesController extends Controller
    */
   public function index()
   {
-    $series = Series::all();
+    $series = Series::with('tag')->get();
 
     return inertia('series/index', compact('series'));
   }
@@ -44,7 +47,9 @@ class SeriesController extends Controller
    */
   public function create()
   {
-    return inertia('series/create');
+    return inertia('series/create', [
+      'tags' => Tags::all(),
+    ]);
   }
 
   /**

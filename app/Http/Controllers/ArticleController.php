@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Tags;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -17,6 +18,7 @@ class ArticleController extends Controller
       'title' => 'required|unique:series|min:3',
       'description' => 'required|min:3',
       'content' => 'required|min:3',
+      'tag_id' => 'required',
     ], [
       'title.required' => 'The title field is required.',
       'title.unique' => 'The title has already been taken.',
@@ -25,6 +27,7 @@ class ArticleController extends Controller
       'description.min' => 'The description must be at least 3 characters.',
       'content.required' => 'The content field is required.',
       'content.min' => 'The content must be at least 3 characters.',
+      'tag_id.required' => 'The tag field is required.',
     ]);
   }
 
@@ -33,8 +36,7 @@ class ArticleController extends Controller
    */
   public function index()
   {
-    $articles = Article::all();
-
+    $articles = Article::with('tag')->get();
     return inertia('articles/index', compact('articles'));
   }
 
@@ -43,7 +45,9 @@ class ArticleController extends Controller
    */
   public function create()
   {
-    return inertia('articles/create');
+    return inertia('articles/create', [
+      'tags' => Tags::all(),
+    ]);
   }
 
   /**s
@@ -52,7 +56,7 @@ class ArticleController extends Controller
   public function store(Request $request)
   {
     $validationData = $this->validateSeries($request);
-
+    strval($validationData['tag_id']);
     Article::create($validationData);
 
     return to_route('articles.index');

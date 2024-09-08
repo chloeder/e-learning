@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { Loader } from "@/components/ui/loader";
+import { Select } from "@/components/ui/select";
 import { TextField } from "@/components/ui/text-field";
 import { Textarea } from "@/components/ui/textarea";
+import { Tags } from "@/types";
+import { usePage } from "@inertiajs/react";
 import { FormEvent } from "react";
 
 interface ArticleFormProps {
@@ -10,12 +13,14 @@ interface ArticleFormProps {
         title: string;
         description: string;
         content: string;
+        tag_id: string;
     };
     setData: (key: string, value: string) => void;
     errors: {
         title?: string;
         description?: string;
         content?: string;
+        tag_id?: string;
     };
     submit: (e: FormEvent<HTMLFormElement>) => void;
     processing: boolean;
@@ -28,6 +33,8 @@ export function ArticleForm({
     submit,
     processing,
 }: ArticleFormProps) {
+    const { tags } = usePage<any>().props;
+
     return (
         <Form validationErrors={errors} onSubmit={submit}>
             <TextField
@@ -57,6 +64,22 @@ export function ArticleForm({
                 className="mb-2"
                 errorMessage={errors.content}
             />
+
+            <Select
+                label="Design software"
+                placeholder="Select a tags"
+                selectedKey={data.tag_id}
+                onSelectionChange={(v) => setData("tag_id", v)}
+            >
+                <Select.Trigger />
+                <Select.List items={tags}>
+                    {tags.map((tag: Tags) => (
+                        <Select.Option id={tag.id} textValue={tag.title}>
+                            {tag.title}
+                        </Select.Option>
+                    ))}
+                </Select.List>
+            </Select>
             {processing ? (
                 <Button type="submit" size="small" isDisabled={processing}>
                     <Loader className="mr-2" /> Submitting...

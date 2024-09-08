@@ -1,25 +1,21 @@
-import { Breadcrumb, Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Card } from "@/components/ui/card";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { PageProps } from "@/types";
+import { PageProps, Tags } from "@/types";
 import { Head, useForm } from "@inertiajs/react";
 import { FormEventHandler } from "react";
-import { SeriesForm } from "./partials/series-form";
 import { toast } from "sonner";
+import { TagsForm } from "./partials/tags-form";
 
-export default function Create({ auth }: PageProps) {
-    const { data, setData, post, processing, errors } = useForm({
-        title: "",
-        description: "",
-        video_url: "",
-        tag_id: "",
+export default function Edit({ auth, tags }: PageProps<{ tags: Tags }>) {
+    const { data, setData, patch, processing, errors } = useForm({
+        title: tags.title,
     });
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
-        post(route("series.store"), {
+        patch(route("tags.update", tags.id), {
             onSuccess: () => {
-                toast.success("Series has been created!", {
+                toast.success("Tags has been updated!", {
                     position: "top-center",
                 });
             },
@@ -30,23 +26,21 @@ export default function Create({ auth }: PageProps) {
         <AuthenticatedLayout
             user={auth.user}
             header={
-                <Breadcrumbs>
-                    <Breadcrumb href="#">Home</Breadcrumb>
-                    <Breadcrumb href={route("series.index")}>Series</Breadcrumb>
-                    <Breadcrumb>Create Series</Breadcrumb>
-                </Breadcrumbs>
+                <h2 className="font-semibold text-xl text-zinc-800 dark:text-zinc-200 leading-tight">
+                    Edit Tags
+                </h2>
             }
         >
-            <Head title="Series" />
+            <Head title="Tags" />
             <Card className="min-w-lg m-4 bg-zinc-800">
                 <Card.Header>
-                    <Card.Title>Form Create Series</Card.Title>
+                    <Card.Title>Form Create Tags</Card.Title>
                     <Card.Description>
-                        Create a new series to be published on the blog.
+                        Create a new tags to be published on the blog.
                     </Card.Description>
                 </Card.Header>
                 <Card.Content>
-                    <SeriesForm
+                    <TagsForm
                         data={data}
                         setData={setData}
                         errors={errors}

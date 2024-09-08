@@ -12,15 +12,20 @@ export interface Article {
     title: string;
     description: string;
     content: string;
+    tag: Tags;
 }
 
 export interface Series {
     id: number;
     title: string;
     description: string;
-    tags: string;
     video_url: string;
-    slug: string;
+    tag: Tags;
+}
+
+export interface Tags {
+    id: number;
+    title: string;
 }
 
 export type PageProps<
@@ -31,5 +36,6 @@ export type PageProps<
     };
     articles: Article;
     series: Series;
+    tags: Tags;
     ziggy: Config & { location: string };
 };

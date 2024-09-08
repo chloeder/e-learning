@@ -1,3 +1,4 @@
+import { NavigationBar } from "@/components/navigation-bar";
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -15,8 +16,6 @@ import {
     HomeSection,
     HomeSubheading,
 } from "./partials/home-partials";
-import GuestLayout from "@/Layouts/GuestLayout";
-import { NavigationBar } from "@/components/navigation-bar";
 
 export default function Welcome() {
     return (
@@ -56,29 +55,6 @@ export default function Welcome() {
                         Get the latest articles that we have published.
                     </HomeSubheading>
 
-                    {/* <Card className="mb-5">
-                    <CardHeader className="flex-row justify-between items-center">
-                        <Library />
-                        <span className="text-sm text-zinc-300 font-semibold">
-                            1.2k Words
-                        </span>
-                    </CardHeader>
-                    <CardContent>
-                        <h1 className="font-bold mb-4">
-                            Handling Error in Laravel
-                        </h1>
-                        <p className="text-sm text-zinc-400">
-                            In this articles we will learn how to notify all
-                            errors from our laravel application to our own
-                            telegram.
-                        </p>
-                    </CardContent>
-                    <CardFooter className="justify-between">
-                        <Badge className="bg-orange-500 text-white">
-                            Laravel
-                        </Badge>
-                    </CardFooter>
-                </Card> */}
                     <Content />
 
                     <Button className="p-2 ms-auto mt-4" size="small">

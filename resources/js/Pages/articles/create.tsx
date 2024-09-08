@@ -12,6 +12,7 @@ export default function Create({ auth }: PageProps) {
         title: "",
         description: "",
         content: "",
+        tag_id: "",
     });
 
     const submit: FormEventHandler = (e) => {
@@ -23,6 +24,7 @@ export default function Create({ auth }: PageProps) {
                 });
             },
         });
+        console.log(data);
     };
 
     return (

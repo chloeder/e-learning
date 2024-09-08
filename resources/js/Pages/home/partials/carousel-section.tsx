@@ -23,7 +23,7 @@ export function CarouselSection() {
                     align: "center",
                     loop: true,
                 }}
-                className="w-full  p-4 mt-4 bg-zinc-200/80 dark:bg-zinc-900"
+                className="w-full p-4 mt-4 bg-zinc-200/80 dark:bg-zinc-900"
             >
                 <Carousel.Content
                     items={Array.from({ length: 16 }, (_, id) => ({
@@ -31,8 +31,11 @@ export function CarouselSection() {
                     }))}
                 >
                     {({ id }) => (
-                        <Carousel.Item id={id} className="lg:basis-1/3">
-                            <Card className="flex aspect-square items-center justify-center">
+                        <Carousel.Item
+                            id={id}
+                            className="lg:flex lg:basis-1/4 lg:gap-4"
+                        >
+                            <Card className="flex aspect-square items-center justify-center lg:w-[400px] lg:h-[300px]">
                                 <Card.Title>{id}</Card.Title>
                             </Card>
                         </Carousel.Item>

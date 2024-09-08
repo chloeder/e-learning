@@ -2,26 +2,23 @@ import { Breadcrumb, Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { buttonStyles } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { PageProps, Series } from "@/types";
+import { PageProps, Tags } from "@/types";
 import { Head, Link } from "@inertiajs/react";
 import { IconPlus } from "justd-icons";
-import { SeriesTable } from "./partials/series-table";
+import { TagsTable } from "../tags/partials/tags-table";
 
-export default function Index({
-    auth,
-    series,
-}: PageProps<{ series: Series[] }>) {
+export default function Index({ auth, tags }: PageProps<{ tags: Tags[] }>) {
     return (
         <AuthenticatedLayout
             user={auth.user}
             header={
                 <Breadcrumbs>
                     <Breadcrumb href="#">Home</Breadcrumb>
-                    <Breadcrumb>Series</Breadcrumb>
+                    <Breadcrumb>Tags</Breadcrumb>
                 </Breadcrumbs>
             }
         >
-            <Head title="Series" />
+            <Head title="Tags" />
             <Card className="m-4">
                 <div className="flex justify-end">
                     <Link
@@ -30,13 +27,13 @@ export default function Index({
                             size: "extra-small",
                             className: "m-4",
                         })}
-                        href={route("series.create")}
+                        href={route("tags.create")}
                     >
                         <IconPlus className="w-4 h-4" />
-                        Crate Series
+                        Create Tags
                     </Link>
                 </div>
-                <SeriesTable series={series} />
+                <TagsTable tags={tags} />
             </Card>
         </AuthenticatedLayout>
     );

@@ -7,6 +7,8 @@ import { FormEventHandler } from "react";
 import { toast } from "sonner";
 
 export default function Edit({ auth, series }: PageProps<{ series: Series }>) {
+    console.log(series);
+
     const { data, setData, patch, processing, errors } = useForm({
         title: series.title,
         description: series.description,
@@ -36,9 +38,9 @@ export default function Edit({ auth, series }: PageProps<{ series: Series }>) {
             <Head title="Series" />
             <Card className="min-w-lg m-4 bg-zinc-800">
                 <Card.Header>
-                    <Card.Title>Form Create Articles</Card.Title>
+                    <Card.Title>Form Create Series</Card.Title>
                     <Card.Description>
-                        Create a new article to be published on the blog.
+                        Create a new series to be published on the blog.
                     </Card.Description>
                 </Card.Header>
                 <Card.Content>

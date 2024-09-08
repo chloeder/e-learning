@@ -37,6 +37,12 @@ export default function Authenticated({
                             >
                                 Series
                             </NavLink>
+                            <NavLink
+                                href={route("tags.index")}
+                                active={route().current("tags.index")}
+                            >
+                                Tags
+                            </NavLink>
                         </div>
 
                         <div className="hidden sm:flex sm:items-center sm:ms-6">

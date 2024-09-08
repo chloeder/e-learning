@@ -4,15 +4,15 @@ import { HomeHeading, HomeHeroSection, HomeSubheading } from "./home-partials";
 
 export function HeroSection() {
     return (
-        <HomeHeroSection className="p-4 gap-6 mb-20">
-            <HomeHeading className="inline text-5xl">
+        <HomeHeroSection className="p-4 gap-6 mb-20 md:m-16 lg:mb-36 lg:min-w lg:m-32">
+            <HomeHeading className="inline text-4xl md:text-7xl lg:text-8xl font-extrabold">
                 Effective Screencasts For
-                <div className="ml-2 inline font-semibold text-[24px] border-2 border-black dark:border-white rounded-xl px-3 -rotate-1 tracking-tighter">
+                <div className="ml-2 lg:ml-4 inline md:block lg:block max-w-max font-semibold text-[24px] md:text-4xl lg:text-6xl border-2 border-black dark:border-white rounded-xl px-3 -rotate-4 tracking-tighter">
                     Web Developers
                 </div>
             </HomeHeading>
 
-            <HomeSubheading>
+            <HomeSubheading className="lg:text-xl">
                 <b>Unlock Your Coding</b> Potential Dive into programming with
                 the best resources designed for beginners. Whether you want
                 interactive lessons, video tutorials, or comprehensive courses,

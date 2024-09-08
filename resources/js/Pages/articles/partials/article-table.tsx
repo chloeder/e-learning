@@ -5,6 +5,8 @@ import { IconPencilBox } from "justd-icons";
 import { DeleteButton } from "./delete-button";
 
 export function ArticleTable({ articles }: { articles: Article[] }) {
+    console.log(articles);
+
     return (
         <Table aria-label="Articles">
             <Table.Header>
@@ -12,6 +14,7 @@ export function ArticleTable({ articles }: { articles: Article[] }) {
                 <Table.Column>Title</Table.Column>
                 <Table.Column>Description</Table.Column>
                 <Table.Column>Content</Table.Column>
+                <Table.Column>Tag</Table.Column>
                 <Table.Column className="justify-center">Action</Table.Column>
             </Table.Header>
             <Table.Body>
@@ -22,6 +25,7 @@ export function ArticleTable({ articles }: { articles: Article[] }) {
                             <Table.Cell>{article.title}</Table.Cell>
                             <Table.Cell>{article.description}</Table.Cell>
                             <Table.Cell>{article.content}</Table.Cell>
+                            <Table.Cell>{article.tag.title}</Table.Cell>
                             <Table.Cell>
                                 <div className="flex gap-2">
                                     <Link

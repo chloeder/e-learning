@@ -5,8 +5,6 @@ import { IconPencilBox } from "justd-icons";
 import { DeleteButton } from "./delete-button";
 
 export function ArticleTable({ articles }: { articles: Article[] }) {
-    console.log(articles);
-
     return (
         <Table aria-label="Articles">
             <Table.Header>

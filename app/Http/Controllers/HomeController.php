@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
   public function index()
   {
-    return inertia('home/Welcome', [
+    return inertia('home/welcome', [
       'canLogin' => Route::has('login'),
       'canRegister' => Route::has('register'),
       'articles' => Article::with('tag')->latest()->get(),
